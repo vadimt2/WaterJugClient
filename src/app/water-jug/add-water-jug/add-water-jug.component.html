@@ -1,0 +1,85 @@
+<div class="container" novalidate>
+  <form
+    [formGroup]="formGroup"
+    (ngSubmit)="onSubmit(formGroup.value)"
+    class="form"
+  >
+    <div
+      fxLayout="row wrap"
+      fxLayout.lt-sm="column"
+      fxLayoutGap="5px"
+      fxLayoutAlign="space-between"
+    >
+      <mat-form-field>
+        <mat-label>Busket X</mat-label>
+        <input
+          type="number"
+          matInput
+          placeholder="Please enter number"
+          formControlName="bucketX"
+          required
+        />
+        <mat-error
+          *ngIf="
+            formGroup.controls['bucketX'].invalid ||
+            !formGroup.controls['bucketX'].touched
+          "
+        >
+          {{ titleAlert }}
+        </mat-error>
+        <mat-error *ngIf="formGroup.controls['bucketX'].errors?.min">
+          {{ minNumberAlert }}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Busket Y</mat-label>
+        <input
+          type="number"
+          min="1"
+          matInput
+          placeholder="Please enter number"
+          formControlName="bucketY"
+          required
+        />
+        <mat-error
+          *ngIf="
+            formGroup.controls['bucketY'].invalid ||
+            !formGroup.controls['bucketY'].touched
+          "
+        >
+          {{ titleAlert }}
+        </mat-error>
+        <mat-error *ngIf="formGroup.controls['bucketY'].errors?.min">
+          {{ minNumberAlert }}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Mazure Buckets</mat-label>
+        <input
+          type="number"
+          min="1"
+          matInput
+          placeholder="Please enter number"
+          formControlName="mazureBuckets"
+          required
+        />
+        <mat-error
+          *ngIf="
+            formGroup.controls['mazureBuckets'].invalid ||
+            !formGroup.controls['mazureBuckets'].touched
+          "
+        >
+          {{ titleAlert }}
+        </mat-error>
+        <mat-error *ngIf="formGroup.controls['mazureBuckets'].errors?.min">
+          {{ minNumberAlert }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="submit">
+      <button mat-raised-button color="primary" type="submit">
+        Submit Form
+      </button>
+    </div>
+  </form>
+</div>

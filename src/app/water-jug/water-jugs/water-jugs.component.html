@@ -1,0 +1,33 @@
+<div fxLayout="column" fxLayoutAlign="start stretch" class="cards">
+  <div fxLayout="row" fxLayoutAlign="center">
+    <div fxFlex="90%" fxFlex.md="66.6667%" fxFlex.gt-md="50%">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title><h2>Submit water jug</h2></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <app-add-water-jug (submitedWaterJug)="onSubmit($event)"></app-add-water-jug>
+        </mat-card-content>
+      </mat-card>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title><h2>Water jug result</h2></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <ng-container>
+            <ng-container *ngIf="waterJugList.length; else empty">
+              <mat-list role="list">
+              <app-water-jug-item *ngFor="let step of waterJugList; let i = index" [step]="step" [index]="i + 1"></app-water-jug-item>
+            </mat-list>
+            </ng-container>
+            <ng-template #empty>
+              <div fxLayout="row" fxLayoutAlign="center center">
+                <h4>No data</h4>
+              </div>
+            </ng-template>
+          </ng-container>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
